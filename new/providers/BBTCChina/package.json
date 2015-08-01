@@ -1,0 +1,11 @@
+{
+  "name": "bbtcchina",
+  "version": "1.0.0",
+  "description": "websocket client for btcchina",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kotielnikov Maksym",
+  "license": "ISC"
+}

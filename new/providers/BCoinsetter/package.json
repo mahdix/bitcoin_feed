@@ -1,0 +1,14 @@
+{
+  "name": "bcoinsetter",
+  "version": "1.0.0",
+  "description": "coinsetter io socket client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "maksym kotielnikov",
+  "license": "ISC",
+  "devDependencies": {
+    "socket.io-client": "^0.9.16"
+  }
+}
