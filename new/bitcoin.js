@@ -23,7 +23,7 @@ if(process.argv[2]==='coinsetter'){
 	}
 	coinsetter.connect();
 }
-if(process.argv[2]==='btcchina'){
+else if(process.argv[2]==='btcchina'){
 	var BCoinsetter = require('./providers/BBTCChina');
 	var coinsetter = new BCoinsetter;
 	console.log("Connecting to BTCChina....");
