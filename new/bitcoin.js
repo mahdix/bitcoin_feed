@@ -24,11 +24,11 @@ if(process.argv[2]==='coinsetter'){
 	coinsetter.connect();
 }
 else if(process.argv[2]==='btcchina'){
-	var BCoinsetter = require('./providers/BBTCChina');
-	var coinsetter = new BCoinsetter;
+	var BBTCChina = require('./providers/BBTCChina');
+	var btcchina = new BBTCChina;
 	console.log("Connecting to BTCChina....");
 	var prev_file_name;
-	coinsetter.ondata = function(data){
+	btcchina.ondata = function(data){
 		var file_name = getFileName('btcchina');
 		if(file_name !== prev_file_name || typeof stream === 'undefined'){
 			console.log("Writing feed to "+'/tmp/bitcoin/'+file_name)
@@ -40,10 +40,29 @@ else if(process.argv[2]==='btcchina'){
 		}
 		stream.write(JSON.stringify(data)+"\n");
 	}
-	coinsetter.connect();
+	btcchina.connect();
+}
+else if(process.argv[2]==='hitbtc'){
+	var HitBTC = require('./providers/HitBTC');
+	var hitbtc = new HitBTC;
+	console.log("Connecting to HitBTC....");
+	var prev_file_name;
+	hitbtc.ondata = function(data){
+		var file_name = getFileName('hitbtc');
+		if(file_name !== prev_file_name || typeof stream === 'undefined'){
+			console.log("Writing feed to "+'/tmp/bitcoin/'+file_name)
+			if( typeof stream !== 'undefined' ){
+				stream.end();
+			}
+			stream = fs.createWriteStream('/tmp/bitcoin/'+file_name); 
+			prev_file_name = file_name;
+		}
+		stream.write(JSON.stringify(data)+"\n");
+	}
+	hitbtc.connect();
 }
 else {
-	console.log("No params passed. Valid params: coinsetter, btcchina");
+	console.log("No params passed. Valid params: coinsetter, btcchina, hitbtc");
 	process.exit();
 }
 
