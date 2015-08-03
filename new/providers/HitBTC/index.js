@@ -14,6 +14,10 @@ function HitBTC(){
 			console.log("Connected to HitBTC");
 		});
 
+		ws.on('error',function(data){
+			console.log(data);
+		})
+
 		ws.on('message', function(message) {
 			var data = JSON.parse(message);
 			if(typeof(s.ondata)==='function' && typeof data.MarketDataIncrementalRefresh !== 'undefined' && data.MarketDataIncrementalRefresh.symbol==='BTCUSD'){
