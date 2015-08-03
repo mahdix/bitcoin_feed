@@ -1,5 +1,5 @@
 'use strict';
-
+// npm install -g wscat
 module.exports = HitBTC;
 
 function HitBTC(){
@@ -13,6 +13,10 @@ function HitBTC(){
 		ws.on('open', function() {
 			console.log("Connected to HitBTC");
 		});
+
+		ws.on('error',function(data){
+			console.log(data);
+		})
 
 		ws.on('message', function(message) {
 			var data = JSON.parse(message);
