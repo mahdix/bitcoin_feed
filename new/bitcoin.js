@@ -194,8 +194,27 @@ else if(process.argv[2]==='okcoin'){
 	}
 	okcoin.connect();
 }
+else if(process.argv[2]==='okcoin_cny'){
+	var OKCoin_CNY = require('./providers/OKCoin_CNY');
+	var okcoin_cny = new OKCoin_CNY;
+	console.log("Connecting to OKCoin_CNY...");
+	var prev_file_name;
+	okcoin_cny.ondata = function(data){
+		var file_name = getFileName('okcoin_cny');
+		if(file_name !== prev_file_name || typeof stream === 'undefined'){
+			console.log("Writing feed to "+'/tmp/bitcoin/'+file_name)
+			if( typeof stream !== 'undefined' ){
+				stream.end();
+			}
+			stream = fs.createWriteStream('/tmp/bitcoin/'+file_name); 
+			prev_file_name = file_name;
+		}
+		stream.write(JSON.stringify(data)+"\n");
+	}
+	okcoin_cny.connect();
+}
 else {
-	console.log("No params passed. Valid params: coinsetter, btcchina, hitbtc, bitstamp, bitfinex, itbit, kraken, btce, coinbase, okcoin");
+	console.log("No params passed. Valid params: coinsetter, btcchina, hitbtc, bitstamp, bitfinex, itbit, kraken, btce, coinbase, okcoin, okcoin_cny");
 	process.exit();
 }
 

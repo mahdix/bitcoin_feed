@@ -1,0 +1,11 @@
+{
+  "name": "OKCoin_CNY",
+  "version": "1.0.0",
+  "description": "okcoin_cny client for btcchina",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mahdi mohammadi",
+  "license": "ISC"
+}
