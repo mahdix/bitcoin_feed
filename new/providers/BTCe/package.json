@@ -1,0 +1,11 @@
+{
+  "name": "BTCe",
+  "version": "1.0.0",
+  "description": "BTCe feed client for binary.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mahdi mohammadi",
+  "license": "ISC"
+}
